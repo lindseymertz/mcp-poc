@@ -7,6 +7,10 @@ const anthropic = new Anthropic({
 });
 
 export async function POST(req: NextRequest) {
+  // Debug logging
+  console.log('API Key exists:', !!process.env.ANTHROPIC_API_KEY);
+  console.log('API Key prefix:', process.env.ANTHROPIC_API_KEY?.substring(0, 15));
+
   const { stepId } = await req.json();
 
   const step = DEMO_STEPS.find((s) => s.id === stepId);
