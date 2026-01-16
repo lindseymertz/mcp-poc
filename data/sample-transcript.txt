@@ -1,0 +1,65 @@
+[00:00:00] LINDSEY: Hey Marcus, thanks for taking the time today. Can you hear me okay?
+
+[00:00:05] MARCUS: Yeah, all good on my end. Thanks for being flexible with the scheduling.
+
+[00:00:12] LINDSEY: Of course! So I did a bit of research on Acme before our call. It looks like you've grown quite a bit over the last few years - congrats on the expansion into the midwest.
+
+[00:00:25] MARCUS: Yeah, it's been a wild ride. That expansion is actually part of why we're talking today.
+
+[00:00:32] LINDSEY: Oh interesting - tell me more about that.
+
+[00:00:36] MARCUS: Well, when we were just the one warehouse in Oakland, our systems were... manageable. Not great, but manageable. Now with two locations and three times the SKU count, it's becoming a real problem.
+
+[00:00:52] LINDSEY: What does "problem" look like day to day?
+
+[00:00:56] MARCUS: Honestly? My warehouse manager probably spends two hours every morning just reconciling inventory counts between our systems. We've got the legacy ERP that finance uses, then the warehouse team has their own spreadsheet system, and there's this old Access database that nobody wants to touch but somehow still runs our reorder alerts.
+
+[00:01:22] LINDSEY: That sounds painful. Two hours every day is... what, 500 hours a year just on reconciliation?
+
+[00:01:30] MARCUS: I hadn't done that math, but yeah. And it's not just the time - we had two stockouts last quarter because the systems didn't sync properly. Lost probably $50K in orders.
+
+[00:01:45] LINDSEY: Ouch. And that's with 12,000 SKUs you mentioned?
+
+[00:01:50] MARCUS: Yeah, about 12,000 active. We've got maybe another 3,000 that are seasonal or slow-moving.
+
+[00:02:00] LINDSEY: Got it. So if I'm hearing you right, the core issues are: data living in multiple places, manual reconciliation eating up time, and the downstream impact of inventory inaccuracies causing stockouts?
+
+[00:02:15] MARCUS: Exactly. And I'll add one more - we're on NetSuite for financials, and whatever we do needs to integrate cleanly with that. Our CFO has made that very clear.
+
+[00:02:28] LINDSEY: Good to know. NetSuite integration is definitely something we handle. Actually, let me show you how one of our customers - Distribution Pro - dealt with a similar situation...
+
+[00:02:42] MARCUS: Distribution Pro? I actually know their ops director, Jamie. Didn't know they were using you guys.
+
+[00:02:50] LINDSEY: Yeah, they've been with us about 18 months now. Similar setup to yours - multiple warehouses, complex SKU catalog. They were able to cut their reconciliation time down to basically zero because everything flows through one system.
+
+[00:03:08] MARCUS: That would be incredible. What's the implementation look like for something like this?
+
+[00:03:15] LINDSEY: Typically 6-8 weeks for a full deployment. The first two weeks are really about data migration and mapping your current workflows. Then we do the NetSuite integration - that's usually another week or two depending on how customized your NetSuite setup is. Then user training and go-live.
+
+[00:03:38] MARCUS: And during that time, we keep running our current systems?
+
+[00:03:42] LINDSEY: Exactly - we run parallel until you're comfortable. No hard cutover until you say go.
+
+[00:03:50] MARCUS: That's reassuring. What about pricing? Ballpark?
+
+[00:03:55] LINDSEY: It depends on a few factors - number of users, warehouses, integration complexity. For a setup like yours, you're probably looking at... let me not guess. How about I put together a proper proposal based on what we've discussed? That way you'll have real numbers.
+
+[00:04:15] MARCUS: That would be great. Can you also send over that Distribution Pro case study? I'd like to share it with my team.
+
+[00:04:22] LINDSEY: Absolutely. And I'll include our NetSuite integration technical specs too - might be useful if you want to loop in your IT team.
+
+[00:04:32] MARCUS: Perfect. You know what, let's also schedule a proper demo. I'd like to get my warehouse manager on the call - he's the one who'll be living in this thing day to day.
+
+[00:04:45] LINDSEY: Great idea. I'll send over some times. Does later this week or early next work?
+
+[00:04:52] MARCUS: Let's do early next week. Thursday morning would be ideal.
+
+[00:04:58] LINDSEY: Thursday morning works. I'll send a few options. Anything else you want me to cover in the follow-up?
+
+[00:05:05] MARCUS: I think that covers it. Looking forward to seeing the demo.
+
+[00:05:10] LINDSEY: Same here. Thanks again Marcus, talk soon.
+
+[00:05:14] MARCUS: Thanks Lindsey. Bye.
+
+[00:05:16] [END OF CALL]
