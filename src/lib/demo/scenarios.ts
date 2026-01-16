@@ -1,6 +1,16 @@
 import { DemoStep } from '@/types';
 import { SIMULATED_EMAILS, GONG_TRANSCRIPT, PROSPECT, SENDER } from './mock-data';
 
+const EMAIL_FORMAT_INSTRUCTION = `
+
+Format your response EXACTLY as follows:
+To: [recipient email]
+Subject: [email subject line]
+
+---
+[email body - write the complete email here]
+---`;
+
 export const DEMO_STEPS: DemoStep[] = [
   {
     id: 'send-outreach',
@@ -32,8 +42,8 @@ Write a compelling, concise outreach email that:
 4. Has a clear, low-friction CTA (offering a brief call)
 5. Is under 150 words
 
-Be personable but professional. No generic templates.`,
-      task: 'Draft and send the initial outreach email to Marcus Chen.'
+Be personable but professional. No generic templates.${EMAIL_FORMAT_INSTRUCTION}`,
+      task: `Draft and send the initial outreach email to ${PROSPECT.name} at ${PROSPECT.email}.`
     }
   },
   {
@@ -61,8 +71,15 @@ Be personable but professional. No generic templates.`,
 
 Context:
 - Prospect: ${PROSPECT.name}, ${PROSPECT.title} at ${PROSPECT.company}
+- Their email: ${PROSPECT.email}
 - They responded positively to your outreach and want to learn more
+- They mentioned Q2 pressure from their CFO
 - You need to offer specific meeting times
+
+Your sender identity:
+- Name: ${SENDER.name}
+- Title: ${SENDER.title}
+- Company: ${SENDER.company}
 
 Your task:
 1. Thank them warmly for their response
@@ -70,8 +87,8 @@ Your task:
 3. Offer 3-4 specific time slots over the next week (Tuesday-Thursday preferred, mornings PT)
 4. Keep it brief and easy to respond to
 
-Be warm but efficient. Make it easy for them to just pick a time.`,
-      task: 'Reply to Marcus with available meeting times for this week and next.'
+Be warm but efficient. Make it easy for them to just pick a time.${EMAIL_FORMAT_INSTRUCTION}`,
+      task: `Reply to ${PROSPECT.name} with available meeting times for this week and next.`
     }
   },
   {
@@ -103,6 +120,11 @@ Meeting details:
 - Duration: 30 minutes
 - Type: Discovery Call / Intro Meeting
 
+Your sender identity:
+- Name: ${SENDER.name}
+- Title: ${SENDER.title}
+- Company: ${SENDER.company}
+
 Your task:
 1. Create a calendar invite with a clear title
 2. Add a brief agenda in the description
@@ -111,8 +133,8 @@ Your task:
 Calendar invite should include:
 - Clear title: "InventoryAI <> Acme Corp - Discovery Call"
 - Video link placeholder: "Video link will be added"
-- Brief agenda: Introductions, Understanding current challenges, Quick overview of InventoryAI, Q&A, Next steps`,
-      task: 'Create the calendar invite for Thursday 10am PT and send Marcus a confirmation.'
+- Brief agenda: Introductions, Understanding current challenges, Quick overview of InventoryAI, Q&A, Next steps${EMAIL_FORMAT_INSTRUCTION}`,
+      task: `Create the calendar invite for Thursday 10am PT and send ${PROSPECT.name} a confirmation email.`
     }
   },
   {
@@ -138,28 +160,35 @@ Calendar invite should include:
     agentContext: {
       systemPrompt: `You are analyzing a sales call transcript and preparing a follow-up.
 
-Your task:
-1. Analyze the transcript to extract:
-   - Key pain points discussed
-   - Specific requirements mentioned
-   - Action items you committed to
-   - Objections or concerns raised
-   - Next steps agreed upon
+Call Summary (from the discovery call that just happened):
+- Prospect: ${PROSPECT.name}, ${PROSPECT.title} at ${PROSPECT.company}
+- Their email: ${PROSPECT.email}
+- Key pain points discussed:
+  * 2 hours/day spent on inventory reconciliation (500+ hours/year)
+  * $50K lost to stockouts last quarter
+  * Using 3 disconnected systems (Legacy ERP, spreadsheets, Access DB)
+  * 12,000 active SKUs across 2 warehouses
+- Requirements: Must integrate with NetSuite
+- Social proof: Prospect knows Jamie at Distribution Pro (our customer)
+- Action items committed:
+  * Send Distribution Pro case study
+  * Send NetSuite integration technical specs
+  * Schedule demo with warehouse manager (Thursday)
 
-2. Search Google Drive for relevant documents:
-   - Distribution Pro case study (mentioned in call)
-   - NetSuite integration specs (requested)
-   - Any other relevant materials
+Your sender identity:
+- Name: ${SENDER.name}
+- Title: ${SENDER.title}
+- Company: ${SENDER.company}
 
-3. Draft a follow-up email that:
-   - Thanks them for their time
-   - Summarizes 2-3 key takeaways (shows you listened)
-   - Attaches the requested documents
-   - Confirms next steps (demo scheduled)
-   - Is warm but professional
+Draft a follow-up email that:
+1. Thanks them for their time
+2. Summarizes 2-3 key takeaways (shows you listened)
+3. Mentions the attached documents (case study, integration specs)
+4. Confirms the demo is scheduled for Thursday
+5. Is warm but professional
 
-Keep the email concise - busy executives skim.`,
-      task: 'Analyze the call transcript, find the requested documents in Drive, and send a follow-up email with attachments.'
+Keep the email concise - busy executives skim.${EMAIL_FORMAT_INSTRUCTION}`,
+      task: `Send a follow-up email to ${PROSPECT.name} with the promised materials.`
     }
   },
   {
@@ -185,15 +214,24 @@ Keep the email concise - busy executives skim.`,
     agentContext: {
       systemPrompt: `You are preparing a pricing proposal for a qualified prospect.
 
+Prospect: ${PROSPECT.name}, ${PROSPECT.title} at ${PROSPECT.company}
+Email: ${PROSPECT.email}
+
 Prospect requirements (from their email):
 - 12,000 SKUs
 - 2 warehouse locations
-- 15 user licenses
+- 15 user licenses to start
 - NetSuite integration required
+- Timeline: Need proposal by end of week for Monday leadership meeting
 
-Pricing structure (use these numbers):
+Your sender identity:
+- Name: ${SENDER.name}
+- Title: ${SENDER.title}
+- Company: ${SENDER.company}
+
+Pricing structure (use these EXACT numbers):
 - Base platform: $2,500/month
-- Per warehouse: $500/month each
+- Per warehouse: $500/month each (2 warehouses = $1,000/month)
 - User licenses: $50/user/month (15 users = $750/month)
 - NetSuite integration: $1,000 one-time setup + $200/month
 - Implementation: $5,000 one-time
@@ -201,18 +239,15 @@ Pricing structure (use these numbers):
 Total monthly: $4,450/month
 Total one-time: $6,000
 
-Your task:
-1. Create a clear, professional proposal email that:
-   - Acknowledges their timeline (Monday leadership meeting)
-   - Breaks down the pricing clearly
-   - Highlights value (reference the $50K stockout cost from call)
-   - Includes ROI framing
-   - Offers to answer questions
+Create a clear, professional proposal email that:
+1. Acknowledges their timeline (Monday leadership meeting)
+2. Breaks down the pricing clearly in a formatted way
+3. Highlights value (reference the $50K stockout cost from call - ROI in ~2 months)
+4. Offers to answer questions or hop on a call
+5. CC's mention that Sarah (CFO) was looped in
 
-2. Search Drive for the pricing guide to attach
-
-IMPORTANT: This email will be reviewed by a human before sending due to the pricing content.`,
-      task: 'Generate a pricing proposal based on Marcus\'s requirements and prepare to send (pending approval).'
+IMPORTANT: This email will be reviewed by a human before sending due to the pricing content.${EMAIL_FORMAT_INSTRUCTION}`,
+      task: `Generate a pricing proposal for ${PROSPECT.name} based on their requirements and prepare to send (pending approval).`
     }
   },
   {
@@ -224,8 +259,19 @@ IMPORTANT: This email will be reviewed by a human before sending due to the pric
     requiresApproval: false,
     mcpTools: ['gmail_send'],
     agentContext: {
-      systemPrompt: 'Send the approved proposal email.',
-      task: 'Send the previously drafted and approved proposal to Marcus.'
+      systemPrompt: `You are confirming that the approved proposal has been sent.
+
+Prospect: ${PROSPECT.name} at ${PROSPECT.company}
+Email: ${PROSPECT.email}
+
+The proposal was already reviewed and approved by the human.
+Simply confirm the send with a brief, friendly message.
+
+Your sender identity:
+- Name: ${SENDER.name}
+
+Just output a brief confirmation that the proposal has been sent.${EMAIL_FORMAT_INSTRUCTION}`,
+      task: `Confirm that the approved proposal has been sent to ${PROSPECT.name}.`
     }
   }
 ];
