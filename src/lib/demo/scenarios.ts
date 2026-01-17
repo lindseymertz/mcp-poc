@@ -1,6 +1,9 @@
 import { DemoStep } from '@/types';
 import { SIMULATED_EMAILS, GONG_TRANSCRIPT, PROSPECT, SENDER } from './mock-data';
 
+// Use env variable for actual email sending (so emails go to your inbox for testing)
+const DEMO_RECIPIENT = process.env.DEMO_PROSPECT_EMAIL || PROSPECT.email;
+
 const EMAIL_FORMAT_INSTRUCTION = `
 
 Format your response EXACTLY as follows:
@@ -43,7 +46,7 @@ Write a compelling, concise outreach email that:
 5. Is under 150 words
 
 Be personable but professional. No generic templates.${EMAIL_FORMAT_INSTRUCTION}`,
-      task: `Draft and send the initial outreach email to ${PROSPECT.name} at ${PROSPECT.email}.`
+      task: `Draft and send the initial outreach email to ${PROSPECT.name}. Send it to: ${DEMO_RECIPIENT}`
     }
   },
   {
@@ -88,7 +91,7 @@ Your task:
 4. Keep it brief and easy to respond to
 
 Be warm but efficient. Make it easy for them to just pick a time.${EMAIL_FORMAT_INSTRUCTION}`,
-      task: `Reply to ${PROSPECT.name} with available meeting times for this week and next.`
+      task: `Reply to ${PROSPECT.name} with available meeting times for this week and next. Send it to: ${DEMO_RECIPIENT}`
     }
   },
   {
@@ -134,7 +137,7 @@ Calendar invite should include:
 - Clear title: "InventoryAI <> Acme Corp - Discovery Call"
 - Video link placeholder: "Video link will be added"
 - Brief agenda: Introductions, Understanding current challenges, Quick overview of InventoryAI, Q&A, Next steps${EMAIL_FORMAT_INSTRUCTION}`,
-      task: `Create the calendar invite for Thursday 10am PT and send ${PROSPECT.name} a confirmation email.`
+      task: `Create the calendar invite for Thursday 10am PT and send ${PROSPECT.name} a confirmation email. Send to: ${DEMO_RECIPIENT}`
     }
   },
   {
@@ -188,7 +191,7 @@ Draft a follow-up email that:
 5. Is warm but professional
 
 Keep the email concise - busy executives skim.${EMAIL_FORMAT_INSTRUCTION}`,
-      task: `Send a follow-up email to ${PROSPECT.name} with the promised materials.`
+      task: `Send a follow-up email to ${PROSPECT.name} with the promised materials. Send it to: ${DEMO_RECIPIENT}`
     }
   },
   {
@@ -247,7 +250,7 @@ Create a clear, professional proposal email that:
 5. CC's mention that Sarah (CFO) was looped in
 
 IMPORTANT: This email will be reviewed by a human before sending due to the pricing content.${EMAIL_FORMAT_INSTRUCTION}`,
-      task: `Generate a pricing proposal for ${PROSPECT.name} based on their requirements and prepare to send (pending approval).`
+      task: `Generate a pricing proposal for ${PROSPECT.name} based on their requirements and prepare to send (pending approval). When approved, send to: ${DEMO_RECIPIENT}`
     }
   },
   {
@@ -271,7 +274,7 @@ Your sender identity:
 - Name: ${SENDER.name}
 
 Just output a brief confirmation that the proposal has been sent.${EMAIL_FORMAT_INSTRUCTION}`,
-      task: `Confirm that the approved proposal has been sent to ${PROSPECT.name}.`
+      task: `Confirm that the approved proposal has been sent to ${PROSPECT.name}. Send confirmation to: ${DEMO_RECIPIENT}`
     }
   }
 ];
