@@ -45,7 +45,9 @@ Write a compelling, concise outreach email that:
 4. Has a clear, low-friction CTA (offering a brief call)
 5. Is under 150 words
 
-Be personable but professional. No generic templates.${EMAIL_FORMAT_INSTRUCTION}`,
+Be personable but professional. No generic templates.
+
+IMPORTANT: Send the email to exactly this address: ${DEMO_RECIPIENT}${EMAIL_FORMAT_INSTRUCTION}`,
       task: `Draft and send the initial outreach email to ${PROSPECT.name}. Send it to: ${DEMO_RECIPIENT}`
     }
   },
@@ -90,7 +92,9 @@ Your task:
 3. Offer 3-4 specific time slots over the next week (Tuesday-Thursday preferred, mornings PT)
 4. Keep it brief and easy to respond to
 
-Be warm but efficient. Make it easy for them to just pick a time.${EMAIL_FORMAT_INSTRUCTION}`,
+Be warm but efficient. Make it easy for them to just pick a time.
+
+IMPORTANT: Send the email to exactly this address: ${DEMO_RECIPIENT}${EMAIL_FORMAT_INSTRUCTION}`,
       task: `Reply to ${PROSPECT.name} with available meeting times for this week and next. Send it to: ${DEMO_RECIPIENT}`
     }
   },
@@ -136,7 +140,10 @@ Your task:
 Calendar invite should include:
 - Clear title: "InventoryAI <> Acme Corp - Discovery Call"
 - Video link placeholder: "Video link will be added"
-- Brief agenda: Introductions, Understanding current challenges, Quick overview of InventoryAI, Q&A, Next steps${EMAIL_FORMAT_INSTRUCTION}`,
+- Brief agenda: Introductions, Understanding current challenges, Quick overview of InventoryAI, Q&A, Next steps
+
+IMPORTANT: Send the confirmation email to exactly this address: ${DEMO_RECIPIENT}
+IMPORTANT: Add this attendee to the calendar invite: ${DEMO_RECIPIENT}${EMAIL_FORMAT_INSTRUCTION}`,
       task: `Create the calendar invite for Thursday 10am PT and send ${PROSPECT.name} a confirmation email. Send to: ${DEMO_RECIPIENT}`
     }
   },
@@ -190,7 +197,9 @@ Draft a follow-up email that:
 4. Confirms the demo is scheduled for Thursday
 5. Is warm but professional
 
-Keep the email concise - busy executives skim.${EMAIL_FORMAT_INSTRUCTION}`,
+Keep the email concise - busy executives skim.
+
+IMPORTANT: Send the email to exactly this address: ${DEMO_RECIPIENT}${EMAIL_FORMAT_INSTRUCTION}`,
       task: `Send a follow-up email to ${PROSPECT.name} with the promised materials. Send it to: ${DEMO_RECIPIENT}`
     }
   },
@@ -249,7 +258,9 @@ Create a clear, professional proposal email that:
 4. Offers to answer questions or hop on a call
 5. CC's mention that Sarah (CFO) was looped in
 
-IMPORTANT: This email will be reviewed by a human before sending due to the pricing content.${EMAIL_FORMAT_INSTRUCTION}`,
+IMPORTANT: This email will be reviewed by a human before sending due to the pricing content.
+
+IMPORTANT: Send the email to exactly this address: ${DEMO_RECIPIENT}${EMAIL_FORMAT_INSTRUCTION}`,
       task: `Generate a pricing proposal for ${PROSPECT.name} based on their requirements and prepare to send (pending approval). When approved, send to: ${DEMO_RECIPIENT}`
     }
   },
@@ -273,7 +284,9 @@ Simply confirm the send with a brief, friendly message.
 Your sender identity:
 - Name: ${SENDER.name}
 
-Just output a brief confirmation that the proposal has been sent.${EMAIL_FORMAT_INSTRUCTION}`,
+Just output a brief confirmation that the proposal has been sent.
+
+IMPORTANT: Send the email to exactly this address: ${DEMO_RECIPIENT}${EMAIL_FORMAT_INSTRUCTION}`,
       task: `Confirm that the approved proposal has been sent to ${PROSPECT.name}. Send confirmation to: ${DEMO_RECIPIENT}`
     }
   }

@@ -1,10 +1,14 @@
 import { Prospect, Sender, Email, Transcript } from '@/types';
 
+// For demo purposes, emails are sent to DEMO_PROSPECT_EMAIL env var
+// This allows testing with real email delivery while maintaining the fictional narrative
+const DEMO_EMAIL = process.env.DEMO_PROSPECT_EMAIL || 'test@example.com';
+
 export const PROSPECT: Prospect = {
   name: 'Marcus Chen',
   title: 'VP of Operations',
   company: 'Acme Corp',
-  email: 'marcus.chen@acmecorp.com',
+  email: DEMO_EMAIL, // Actual emails go here for testing
   painPoints: [
     'Using 3 different tools for inventory management',
     'Warehouse team spending hours reconciling data',
