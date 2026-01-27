@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { Brain, Loader2, ArrowDown } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Brain, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ThinkingPaneProps {
@@ -16,7 +15,6 @@ export function ThinkingPane({ content, isThinking }: ThinkingPaneProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const [userScrolledUp, setUserScrolledUp] = useState(false);
-  const [showScrollButton, setShowScrollButton] = useState(false);
   const isAutoScrolling = useRef(false);
 
   // Check if scroll position is near bottom
@@ -33,16 +31,7 @@ export function ThinkingPane({ content, isThinking }: ThinkingPaneProps) {
     if (isAutoScrolling.current) return;
 
     const nearBottom = isNearBottom();
-
-    if (!nearBottom) {
-      // User scrolled up
-      setUserScrolledUp(true);
-      setShowScrollButton(true);
-    } else {
-      // User scrolled back to bottom
-      setUserScrolledUp(false);
-      setShowScrollButton(false);
-    }
+    setUserScrolledUp(!nearBottom);
   }, [isNearBottom]);
 
   // Scroll to bottom function
@@ -60,7 +49,6 @@ export function ThinkingPane({ content, isThinking }: ThinkingPaneProps) {
     setTimeout(() => {
       isAutoScrolling.current = false;
       setUserScrolledUp(false);
-      setShowScrollButton(false);
     }, 300);
   }, []);
 
@@ -79,16 +67,8 @@ export function ThinkingPane({ content, isThinking }: ThinkingPaneProps) {
     if (isThinking && content.length < 100) {
       // New session starting, reset state
       setUserScrolledUp(false);
-      setShowScrollButton(false);
     }
   }, [isThinking, content]);
-
-  // Hide scroll button when not streaming and at bottom
-  useEffect(() => {
-    if (!isThinking && isNearBottom()) {
-      setShowScrollButton(false);
-    }
-  }, [isThinking, isNearBottom]);
 
   return (
     <div className="flex h-full w-[400px] flex-col border-l border-border bg-card">
@@ -128,21 +108,6 @@ export function ThinkingPane({ content, isThinking }: ThinkingPaneProps) {
             )}
           </div>
         </div>
-
-        {/* Scroll to bottom button */}
-        {showScrollButton && (
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
-            <Button
-              size="sm"
-              variant="secondary"
-              onClick={scrollToBottom}
-              className="gap-1.5 rounded-full shadow-lg"
-            >
-              <ArrowDown className="h-3 w-3" />
-              <span className="text-xs">Scroll to bottom</span>
-            </Button>
-          </div>
-        )}
       </div>
     </div>
   );
